@@ -99,7 +99,7 @@
     background-color: #00bfff;
     color: white;
     margin-bottom: 15px;
-    displays: none;
+    display: none;
     animation: slideDown 0.5s;
 }
 
