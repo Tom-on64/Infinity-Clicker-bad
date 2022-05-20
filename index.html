@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Clicker</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="tabContainer">
+        <button class="tabButton" id="defaultOpen" onclick="openTab(event, 'infinity', 'tab', 'tabButton')">Infinity</button>
+        <button class="tabButton" onclick="openTab(event, 'shop', 'tab', 'tabButton')">Shop</button>
+        <button class="tabButton" onclick="openTab(event, 'dev', 'tab', 'tabButton')">DEV</button>
+        <button class="tabButton" onclick="openTab(event, 'settings', 'tab', 'tabButton')">Settings</button>
+        <button class="tabButton" onclick="openTab(event, 'achivements', 'tab', 'tabButton')">Achivements</button>
+        <button class="tabButton" onclick="openTab(event, 'info', 'tab', 'tabButton')">Info</button>
+    </div>
+    <div class="alert" id="alert">
+        <span class="closeBtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <span id="alertText">Hi</span>
+    </div>
+    <div class="numberText">Number: <span id="numberInt">50</span></div>
+    <div class="tab" id="infinity">
+        <div class="generatorContainer">
+            <div class="generator" id="gen1" onClick="buyGenerator(1)"></div>
+            <div class="generator" id="gen2" onClick="buyGenerator(2)"></div>
+            <div class="generator" id="gen3" onClick="buyGenerator(3)"></div>
+            <div class="generator" id="gen4" onClick="buyGenerator(4)"></div>
+            <div class="generator" id="gen5" onClick="buyGenerator(5)"></div>
+            <div class="generator" id="gen6" onClick="buyGenerator(6)"></div>
+            <div class="generator" id="gen7" onClick="buyGenerator(7)"></div>
+            <div class="generator" id="gen8" onClick="buyGenerator(8)"></div>
+            <div class="generator" id="gen9" onClick="buyGenerator(9)"></div>
+            <div class="generator" id="gen10" onClick="buyGenerator(10)"></div>
+        </div>
+    </div>
+    <div class="tab" id="shop">
+
+    </div>
+    <div class="tab" id="dev">
+        <div class="generator" onClick="number *= 2">2x Number</div>
+    </div>
+    <div class="tab" id="settings">
+        <button onClick="saveGame()" class="generator">Save Game</button>
+        <button onClick="loadGame()" class="generator">Load Game</button>
+    </div>
+    <div class="tab" id="achivements">
+
+    </div>
+    <div class="tab" id="info">
+        <h2>Infinity Clicker</h2>
+        <h3 class="infoButton" onclick="openTab(event, 'what', 'info', 'infoButton')">What Is It?</h3>
+        <p class="info" id="what">Infinity Clicker is an Incremental game, meaning that to get further, you have gotta reset your progress to get a slight boost.</p>
+        <h3 class="infoButton" onclick="openTab(event, 'faq', 'info', 'infoButton')">FAQ</h3>
+        <p class="info" id="faq"><b>How Do The Generators Work?</b><br>- The generators generate the thing above them. For example: Generator 2 generates generators 1 and a Generator 1 generates the number.</p>
+    </div>
+</body>
+    <script src="js/main.js"></script>
+</html>
