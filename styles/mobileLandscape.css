@@ -1,0 +1,150 @@
+/* Styles */
+
+/* Full Page */
+* {
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    margin: auto;
+    user-select: none;
+}
+
+/* Generators */
+.generator {
+    border: 2px solid red;
+    background-color: black;
+    color: lime;
+    text-align: center;
+    width: 220px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.infoText {
+    font-size: 0.7em;
+}
+
+.costText {
+    font-size: 0.9em;
+}
+
+.generator.locked {
+    color: red;
+}
+
+.generatorContainer {
+    display: flex;
+    width: 660px;
+    flex-wrap: wrap;
+}
+
+/* Number Text */
+.numberText {
+    margin: 15px;
+    font-size: 1.0em;
+    text-align: center;
+    color: #DDD;
+}
+
+#numberInt {
+    font-size: 1.5em;
+    color: #EEE;
+}
+
+/* Tabs */
+.tabContainer {
+    border: 2px solid #FFF;
+    font-size: 1em;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tabContainer button {
+    color: #CCC;
+    border: 2px solid #FFF;
+    font-size: 1em;
+    margin: 2px;
+    padding: 0.5em 0.5em 0.5em;
+}
+
+.tabContainer button:hover {
+    border: 2px solid #0B0;
+}
+
+.tabContainer button.active {
+    color: #CCC;
+    border: 2px solid #0F0;
+    font-size: 1em;
+}
+
+.tab {
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+/* Info */
+.infoButton {
+    background-color: #444;
+    margin: 3px;
+    border: 2px solid #333;
+}
+
+.info {
+    display: none;
+}
+
+/* Alerts */
+.alert {
+    padding: 20px;
+    background-color: #00bfff;
+    color: white;
+    margin-bottom: 15px;
+    display: none;
+    animation: slideDown 0.5s;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #00bfff;
+}
+
+#alertText {
+    background: #00bfff;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+/* Animations */
+
+/* Fade Effect */
+@keyframes fadeEffect {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Slide Down */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(0px, -120px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px)
+    }
+}
