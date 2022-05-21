@@ -2,18 +2,32 @@
 
 // Variables
 var number = 10
+var infinity = 0
 var generators = []
+var autobuyers = []
+var brokeInfinity = false
 var lastUpdate = Date.now()
-
-for(let i = 0;  i< 10; i += 1) {
-    // Getting All The Generator Into A List
-    let generator = {
-        cost: Math.pow(Math.pow(10, i), i) * 10,
-        bought: 0,
-        amount: 0,
-        mult: 1
+function createGen() {
+    for(let i = 0;  i< 10; i += 1) {
+        // Getting All The Generator Into A List
+        let generator = {
+            cost: Math.pow(Math.pow(10, i), i) * 10,
+            bought: 0,
+            amount: 0,
+            mult: 1
+        }
+        generators.push(generator)
     }
-    generators.push(generator)
+}
+function createAuto() {
+    for (let i = 0; i < 10; i += 1) {
+        // Getting All The Autobuyer Into A List
+        let autobuyer = {
+            cost: Math.pow(Math.pow(10, i), i) * 10000000,
+            interval: 1
+        }
+        autobuyers.push(autobuyer)
+    }
 }
 
 // Functions
@@ -85,8 +99,17 @@ function buyGenerator(i) {
     g.cost *= 1.5
 }
 
+// Buy Auto
+function buyAutobuyer(i) {
+    let a = autobuyers[i - 1]
+    if (a.cost > number) return
+    number -= a.cost
+    a.interval += 1
+    a.cost *= 1.5
+}
+
 // Change Tab
-function openTab(event, tabId, hideClass, buttonClass) {
+function openTab(event, tabId, hideClass, buttonClass, display) {
     // Variables
     let i, tab, button
 
@@ -103,8 +126,20 @@ function openTab(event, tabId, hideClass, buttonClass) {
     }
 
     // Show Current And Add "active" To Its Button
-    document.getElementById(tabId).style.display = "block"
+    document.getElementById(tabId).style.display = display
     event.currentTarget.className += " active"
+}
+
+// Add Infinity
+function addInfinity(brokeInfinity) {
+    if (brokeInfinity == false) {
+        infinity += 1
+        number = 10
+        generators = []
+        autobuyers = []
+        createGen()
+        createAuto()
+    }
 }
 
 // Updates
@@ -116,16 +151,23 @@ function updateGui() {
         if (g.cost > number) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
     }
+    for (let i = 0; i < 10; i += 1) {
+        let a = autobuyers[i]
+        document.getElementById("auto" + (i + 1)).innerHTML = "<span class='infoText'>Interval: " + format(a.interval) + "</span><span class='costText'><br>Cost: " + format(a.cost) + "</span>"
+        if (a.cost > number) document.getElementById("auto" + (i + 1)).classList.add("locked")
+        else document.getElementById("auto" + (i + 1)).classList.remove("locked")
+    }
 }
 
 // Saving
 function saveGame() {
     var savedFile = {
-        number: number
+        number: number,
+        infinity: infinity
     }
     localStorage.setItem("saveFile", JSON.stringify(savedFile))
     localStorage.setItem("generators", JSON.stringify(generators))
-    console.log("Game Saved!")
+    localStorage.setItem("autobuyers", JSON.stringify(autobuyers))
     alert("Game Saved!")
 }
 
@@ -133,24 +175,19 @@ function loadGame() {
     var saveFile = JSON.parse(localStorage.getItem("saveFile"))
     if (saveFile.number !== undefined) {
         generators = JSON.parse(localStorage.getItem("generators"))
+        autobuyers = JSON.parse(localStorage.getItem("autobuyers"))
         number = saveFile.number
+        infinity = saveFile.infinity
     }
     alert("Game Loaded!")
 }
 
 function resetGame() {
     number = 10
+    infinity = 0
     generators = []
-    for (let i = 0; i < 10; i += 1) {
-        // Getting All The Generator Into A List
-        let generator = {
-            cost: Math.pow(Math.pow(10, i), i) * 10,
-            bought: 0,
-            amount: 0,
-            mult: 1
-        }
-        generators.push(generator)
-    }
+    createGen()
+    createAuto()
     alert('Game Reset!')
 }
 
@@ -166,6 +203,12 @@ function productionLoop(diff) {
     number += generators[0].amount * generators[0].mult * diff
     for (let i = 1; i < 10; i += 1) {
         generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
+    }
+    for (let i = 1; i < 10; i += 1) {
+        document.getElementById("gen" + i).click()
+    }
+    if (isFinite(number) == false) {
+        addInfinity(brokeInfinity)
     }
 }
 

@@ -12,12 +12,12 @@
 
 <body>
     <div class="tabContainer">
-        <button class="tabButton" id="defaultOpen" onclick="openTab(event, 'infinity', 'tab', 'tabButton')">Infinity</button>
-        <button class="tabButton" onclick="openTab(event, 'shop', 'tab', 'tabButton')">Shop</button>
-        <button class="tabButton" onclick="openTab(event, 'dev', 'tab', 'tabButton')">DEV</button>
-        <button class="tabButton" onclick="openTab(event, 'settings', 'tab', 'tabButton')">Settings</button>
-        <button class="tabButton" onclick="openTab(event, 'achivements', 'tab', 'tabButton')">Achivements</button>
-        <button class="tabButton" onclick="openTab(event, 'info', 'tab', 'tabButton')">Info</button>
+        <button class="tabButton" id="defaultOpen" onclick="openTab(event, 'infinity', 'tab', 'tabButton', 'block')">Infinity</button>
+        <button class="tabButton" onclick="openTab(event, 'shop', 'tab', 'tabButton', 'block')">Shop</button>
+        <button class="tabButton" onclick="openTab(event, 'dev', 'tab', 'tabButton', 'block')">DEV</button>
+        <button class="tabButton" onclick="openTab(event, 'settings', 'tab', 'tabButton', 'block')">Settings</button>
+        <button class="tabButton" onclick="openTab(event, 'achivements', 'tab', 'tabButton', 'block')">Achivements</button>
+        <button class="tabButton" onclick="openTab(event, 'info', 'tab', 'tabButton', 'block')">Info</button>
     </div>
     <div class="alert" id="alert">
         <span class="closeBtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -26,10 +26,11 @@
     <div class="numberText">Number: <span id="numberInt">50</span></div>
     <div class="tab" id="infinity">
         <div class="infinityTabContainer">
-            <button class="infinityTabButton" id="defaultOpen" onclick="openTab(event, 'generatorContainer', 'infinityTab', 'infinityTabButton')">Generator</button>
-            <button class="infinityTabButton" onclick="openTab(event, 'calculatorContainer', 'infinityTab', 'infinityTabButton')">Calculator</button>
+            <button class="infinityTabButton" id="defaultOpen" onclick="openTab(event, 'generatorContainer', 'infinityTab', 'infinityTabButton', 'flex')">Generator</button>
+            <button class="infinityTabButton" onclick="openTab(event, 'calculatorContainer', 'infinityTab', 'infinityTabButton', 'block')">Calculator</button>
+            <button class="infinityTabButton" onclick="openTab(event, 'dilatorContainer', 'infinityTab', 'infinityTabButton', 'block')">Dilator</button>
         </div>
-        <div class="infinityTab" id="generatorContainer">
+        <div class="infinityTab" id="generatorContainer" style="display: flex;">
             <div class="generator" id="gen1" onClick="buyGenerator(1)"></div>
             <div class="generator" id="gen2" onClick="buyGenerator(2)"></div>
             <div class="generator" id="gen3" onClick="buyGenerator(3)"></div>
@@ -42,11 +43,33 @@
             <div class="generator" id="gen10" onClick="buyGenerator(10)"></div>
         </div>
         <div class="infinityTab" id="calculatorContainer">
+            <h3>Number Calculations</h3>
+            Comming Soon...
+        </div>
+        <div class="infinityTab" id="dilatorContainer">
+            <h3>Time Dilation</h3>
             Comming Soon...
         </div>
     </div>
     <div class="tab" id="shop">
-
+        <h2>Shop</h2>
+        <div class="shopTabContainer">
+            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'autobuyerContainer', 'shopTab', 'shopTabButton', 'flex')">Autobuyers</button>
+            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'autobuyerContainer', 'shopTab', 'shopTabButton', 'flex')">Infinitum</button>
+            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'autobuyerContainer', 'shopTab', 'shopTabButton', 'flex')">Infinitum</button>
+        </div>
+        <div class="shopTab" id="autobuyerContainer">
+            <div class="autobuyer" id="auto1" onClick="buyAutobuyer(1)">test</div>
+            <div class="autobuyer" id="auto2" onClick="buyAutobuyer(2)">test</div>
+            <div class="autobuyer" id="auto3" onClick="buyAutobuyer(3)">test</div>
+            <div class="autobuyer" id="auto4" onClick="buyAutobuyer(4)">test</div>
+            <div class="autobuyer" id="auto5" onClick="buyAutobuyer(5)">test</div>
+            <div class="autobuyer" id="auto6" onClick="buyAutobuyer(6)">test</div>
+            <div class="autobuyer" id="auto7" onClick="buyAutobuyer(7)">test</div>
+            <div class="autobuyer" id="auto8" onClick="buyAutobuyer(8)">test</div>
+            <div class="autobuyer" id="auto9" onClick="buyAutobuyer(9)">test</div>
+            <div class="autobuyer" id="auto10" onClick="buyAutobuyer(10)">test</div>
+        </div>
     </div>
     <div class="tab" id="dev">
         <div class="generator" onClick="number *= 2">2x Number</div>
@@ -58,7 +81,6 @@
         <button onClick="resetGame()" class="generator">RESET GAME</button>
     </div>
     <div class="tab" id="achivements">
-
     </div>
     <div class="tab" id="info">
         <h2>Infinity Clicker</h2>

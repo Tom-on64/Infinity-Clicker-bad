@@ -108,7 +108,36 @@
 
 .infinityTab {
     display: none;
-        animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.shopTabContainer {
+    font-size: 1em;
+    text-align: center;
+    overflow: hidden;
+}
+
+.shopTabContainer button {
+    color: #CCC;
+    border: 2px solid #FFF;
+    font-size: 1em;
+    margin: 2px;
+    padding: 0.5em 0.5em 0.5em;
+}
+
+.shopTabContainer button:hover {
+    border: 2px solid #0B0;
+}
+
+.shopTabContainer button.active {
+    color: #CCC;
+    border: 2px solid #0F0;
+    font-size: 1em;
+}
+
+.shopTab {
+    display: none;
+    animation: fadeEffect 1s;
 }
 
 /* Info */
