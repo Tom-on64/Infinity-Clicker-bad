@@ -12,5 +12,8 @@ This is an incremental game, meaning that to get, further you gotta reset all of
 
 ## TODO-LIST
 
-- Saving
-- Calc, Time And More
+- Add Advancements
+- Finish Shop
+- Add Calc, Time And More
+- Add Break Infinity
+- Add Infinity (Number)
