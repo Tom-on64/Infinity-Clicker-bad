@@ -25,23 +25,47 @@ function format(amount) {
     }
     else if (amount < 1000000 ) {
         let divided = amount / 1000
-        return divided.toFixed(2) + "k"
+        return divided.toFixed(2) + "K"
     }
     else if (amount < 1000000000){
         let divided = amount / 1000000
-        return divided.toFixed(2) + "m"
+        return divided.toFixed(2) + "M"
     }
     else if (amount < 1000000000000) {
         let divided = amount / 1000000000
-        return divided.toFixed(2) + "b"
+        return divided.toFixed(2) + "B"
     }
     else if (amount < 1000000000000000) {
         let divided = amount / 1000000000000
-        return divided.toFixed(2) + "t"
+        return divided.toFixed(2) + "T"
     }
     else if (amount < 1000000000000000000) {
         let divided = amount / 1000000000000000
-        return divided.toFixed(2) + "q"
+        return divided.toFixed(2) + "Qa"
+    }
+    else if (amount < 1000000000000000000000) {
+        let divided = amount / 1000000000000000000
+        return divided.toFixed(2) + "Qt"
+    }
+    else if (amount < 1000000000000000000000000) {
+        let divided = amount / 1000000000000000000000
+        return divided.toFixed(2) + "Sx"
+    }
+    else if (amount < 1000000000000000000000000000) {
+        let divided = amount / 1000000000000000000000000
+        return divided.toFixed(2) + "Sp"
+    }
+    else if (amount < 1000000000000000000000000000000) {
+        let divided = amount / 1000000000000000000000000000
+        return divided.toFixed(2) + "Oc"
+    }
+    else if (amount < 1000000000000000000000000000000000) {
+        let divided = amount / 1000000000000000000000000000000
+        return divided.toFixed(2) + "No"
+    }
+    else if (amount < 1000000000000000000000000000000000000) {
+        let divided = amount / 1000000000000000000000000000000000
+        return divided.toFixed(2) + "Dc"
     }
     else {
         let power = Math.floor(Math.log10(amount))
