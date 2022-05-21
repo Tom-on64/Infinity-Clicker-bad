@@ -1,14 +1,14 @@
 
 
 // Variables
-var number = 50
+var number = 10
 var generators = []
 var lastUpdate = Date.now()
 
 for(let i = 0;  i< 10; i += 1) {
     // Getting All The Generator Into A List
     let generator = {
-        cost: Math.pow(Math.pow(10, i), i) * 50,
+        cost: Math.pow(Math.pow(10, i), i) * 10,
         bought: 0,
         amount: 0,
         mult: 1
@@ -34,6 +34,14 @@ function format(amount) {
     else if (amount < 1000000000000) {
         let divided = amount / 1000000000
         return divided.toFixed(2) + "b"
+    }
+    else if (amount < 1000000000000000) {
+        let divided = amount / 1000000000000
+        return divided.toFixed(2) + "t"
+    }
+    else if (amount < 1000000000000000000) {
+        let divided = amount / 1000000000000000
+        return divided.toFixed(2) + "q"
     }
     else {
         let power = Math.floor(Math.log10(amount))
@@ -104,6 +112,22 @@ function loadGame() {
         number = saveFile.number
     }
     alert("Game Loaded!")
+}
+
+function resetGame() {
+    number = 10
+    generators = []
+    for (let i = 0; i < 10; i += 1) {
+        // Getting All The Generator Into A List
+        let generator = {
+            cost: Math.pow(Math.pow(10, i), i) * 10,
+            bought: 0,
+            amount: 0,
+            mult: 1
+        }
+        generators.push(generator)
+    }
+    alert('Game Reset!')
 }
 
 // alert

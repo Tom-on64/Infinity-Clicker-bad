@@ -11,7 +11,7 @@
 
 /* Generators */
 .generator {
-    border: 2px solid red;
+    border: 2px solid lime;
     background-color: black;
     color: lime;
     text-align: center;
@@ -28,11 +28,12 @@
     font-size: 0.9em;
 }
 
-.generator.locked {
+.locked {
     color: red;
+    border: 2px solid red;
 }
 
-.generatorContainer {
+#generatorContainer {
     display: flex;
     width: 660px;
     flex-wrap: wrap;

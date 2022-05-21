@@ -11,11 +11,11 @@
 
 /* Generators */
 .generator {
-    border: 2px solid red;
+    border: 2px solid lime;
     background-color: black;
     color: lime;
     text-align: center;
-    width: 180px;
+    width: 175px;
     padding: 10px;
     cursor: pointer;
 }
@@ -28,26 +28,27 @@
     font-size: 1.0em;
 }
 
-.generator.locked {
+.locked {
     color: red;
+    border: 2px solid red;
 }
 
-.generatorContainer {
+#generatorContainer {
     display: flex;
-    width: 360px;
+    width: 350px;
     flex-wrap: wrap;
 }
 
 /* Number Text */
 .numberText {
     margin: 25px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     text-align: center;
     color: #DDD;
 }
 
 #numberInt {
-    font-size: 2em;
+    font-size: 1.8em;
     color: #EEE;
 }
 
@@ -78,6 +79,35 @@
 }
 
 .tab {
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+.infinityTabContainer {
+    font-size: 0.8em;
+    text-align: center;
+    overflow: hidden;
+}
+
+.infinityTabContainer button {
+    color: #CCC;
+    border: 2px solid #FFF;
+    font-size: 1em;
+    margin: 2px;
+    padding: 0.5em 0.5em 0.5em;
+}
+
+.infinityTabContainer button:hover {
+    border: 2px solid #0B0;
+}
+
+.infinityTabContainer button.active {
+    color: #CCC;
+    border: 2px solid #0F0;
+    font-size: 0.9em;
+}
+
+.infinityTab {
     display: none;
     animation: fadeEffect 1s;
 }
