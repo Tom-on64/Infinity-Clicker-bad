@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.titleText {
+    font-size: 1.2em;
+}
+
 .infoText {
     font-size: 0.8em;
 }

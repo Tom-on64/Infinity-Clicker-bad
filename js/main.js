@@ -24,7 +24,8 @@ function createAuto() {
         // Getting All The Autobuyer Into A List
         let autobuyer = {
             cost: Math.pow(Math.pow(10, i), i) * 10000000,
-            interval: 1
+            interval: 150000,
+            isBought: false
         }
         autobuyers.push(autobuyer)
     }
@@ -103,9 +104,16 @@ function buyGenerator(i) {
 function buyAutobuyer(i) {
     let a = autobuyers[i - 1]
     if (a.cost > number) return
-    number -= a.cost
-    a.interval += 1
-    a.cost *= 1.5
+    if (a.interval > 1) {
+        number -= a.cost
+        a.interval /= 1.5
+        a.cost *= 1.5
+    }
+    else {
+        a.interval = 0
+        a.cost = 0
+    }
+    a.isBought = true
 }
 
 // Change Tab
@@ -140,6 +148,14 @@ function addInfinity(brokeInfinity) {
         createGen()
         createAuto()
     }
+    if (brokeInfinity == true) {
+        infinity += number / 1.8 * Math.pow(10, 308)
+        number = 10
+        generators = []
+        autobuyers = []
+        createGen()
+        createAuto()
+    }
 }
 
 // Updates
@@ -147,13 +163,13 @@ function updateGui() {
     document.getElementById("numberInt").textContent = format(number)
     for (let i = 0; i < 10; i += 1) {
         let g = generators[i]
-        document.getElementById("gen" + (i+1)).innerHTML = "<span class='infoText'>Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Multiplier: " + format(g.mult) + "</span><span class='costText'><br>Cost: " + format(g.cost) + "</span>"
+        document.getElementById("gen" + (i+1)).innerHTML = "<span class='titleText'>Generator " + (i + 1) + "</span><br><span class='infoText'>Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Multiplier: " + format(g.mult) + "</span><span class='costText'><br>Cost: " + format(g.cost) + "</span>"
         if (g.cost > number) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
     }
     for (let i = 0; i < 10; i += 1) {
         let a = autobuyers[i]
-        document.getElementById("auto" + (i + 1)).innerHTML = "<span class='infoText'>Interval: " + format(a.interval) + "</span><span class='costText'><br>Cost: " + format(a.cost) + "</span>"
+        document.getElementById("auto" + (i + 1)).innerHTML = "<span class='titleText'>Autobuyer " + (i + 1) + "</span><br><span class='infoText'>Interval: " + format(a.interval) + "</span><span class='costText'><br>Cost: " + format(a.cost) + "</span>"
         if (a.cost > number) document.getElementById("auto" + (i + 1)).classList.add("locked")
         else document.getElementById("auto" + (i + 1)).classList.remove("locked")
     }
@@ -179,6 +195,7 @@ function loadGame() {
         number = saveFile.number
         infinity = saveFile.infinity
     }
+    
     alert("Game Loaded!")
 }
 
@@ -205,7 +222,14 @@ function productionLoop(diff) {
         generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
     }
     for (let i = 1; i < 10; i += 1) {
-        document.getElementById("gen" + i).click()
+        var autobuyerFunctions = []
+        autobuyerFunctions[i] = function () {
+            let a = generators[i]
+            if (a.isBought) {
+                document.getElementById("gen" + i).click()
+            }
+            setTimeout(autobuyerFunctions[i], a.interval)
+        }
     }
     if (isFinite(number) == false) {
         addInfinity(brokeInfinity)
@@ -227,6 +251,9 @@ function mainLoop() {
 setInterval(mainLoop, 50)
 setInterval(saveGame, 30000)
 window.onload = loadGame
+for (let i = 1; i < 10; i += 1) {
+    autobuyerFunctions[i]()
+}
 
 // Open Infinity By Default
 document.getElementById("defaultOpen").click()
