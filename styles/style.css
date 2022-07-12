@@ -65,11 +65,29 @@ button.clickButton {
 }
 
 #bottomBar {
+  display: flex;
   background-color: #42445A;
   border: 2px gray solid;
   margin: 2px;
   padding: 2px;
   width: 100%;
+}
+
+#bottomBar div {
+  background-color: #42445A;
+}
+
+#numberTextBottom {
+  background-color: #42445A;
+}
+
+.achivement {
+  background-color: #16171B;
+  border: 2px red solid;
+  margin: 2px;
+  padding: 2px;
+  width: 64px;
+  height: 64px;
 }
 
 .active {

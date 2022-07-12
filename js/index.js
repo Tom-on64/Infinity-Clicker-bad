@@ -1,4 +1,3 @@
-var number = 0
 // save file
 var saveFile = {
   "power":{
@@ -162,12 +161,27 @@ function buyUpgrade (type) {
 function changeTab (tab) {
   document.getElementById("infinityPage").style.display = "none"
   document.getElementById("infinitumPage").style.display = "none"
+  document.getElementById("achivementPage").style.display = "none"
   document.getElementById("helpPage").style.display = "none"
   document.getElementById("aboutPage").style.display = "none"
   document.getElementById("devPage").style.display = "none"
   document.getElementById("startPage").style.display = "none"
 
   page = document.getElementById(tab + "Page").style.display = "block"
+}
+
+function alert (message, bgColor, textColor) {
+  document.getElementById("alertMessage").textContent = message
+  document.getElementById("alertMessage").style.backgroundColor = bgColor
+  document.getElementById("alertMessage").style.color = textColor
+
+  setTimeout(function () {
+    document.getElementById("alertMessage").textContent = ""
+    document.getElementById("alertMessage").style.backgroundColor = "none"
+    document.getElementById("alertMessage").style.color = "none"
+  }, 10000)
+
+  
 }
 
 function save () {

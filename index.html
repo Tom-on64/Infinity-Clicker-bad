@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <title id="webTitle">Infinity Clicker</title>
 </head>
 <body>
   <div id="topBar" style="display: none">
     <button onClick="changeTab('infinity')" class="tabButton" class="active">Infinity</button>
     <button onClick="changeTab('infinitum')" class="tabButton">Infinitum</button>
+    <button onClick="changeTab('achivement')" class="tabButton">Achivements</button>
     <button onClick="changeTab('help')" class="tabButton">Help</button>
     <button onClick="changeTab('about')" class="tabButton">About</button>
     <button onClick="changeTab('dev')" class="tabButton">DEV</button>
@@ -77,6 +79,10 @@
     <hr>
     <h3>You need to reach infinity to unlock this page!</h3>
   </div>
+  <div class="page" id="achivementPage" class="center" style="display: none">
+    <h2>Achivements</h2> <br> <hr>
+    <img class="achivement" id="a01" src="/img/achivement/a01.png">
+  </div>
   <div class="page"  id="startPage" style="display: block" class="center">
     <div id="numberContainer">Number: 50</div>
     Number Per Click Upgrades (NPC Upgrades) <br>
@@ -95,7 +101,12 @@
     <button class="upgrade" onClick="saveFile.power.number *= 2">2x Number</button>
   </div>
   <div>
-    <div style="width: 50vw" id="bottomBar">Number: <span id="numberTextBottom">50</span></div>
+    <div style="width: 50vw" id="bottomBar">
+      <div>Number: <span id="numberTextBottom">50</span></div>
+      <div id="alertBox">
+        <span id="alertMessage">This is an Alert!</span>
+      </div>
+    </div>
   </div>
 <script src="js/index.js"></script>
 </body>
