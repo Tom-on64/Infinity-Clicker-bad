@@ -1,12 +1,10 @@
 var number = 0
-var npc = 0
-var nps = 0
 // save file
 var saveFile = {
   "power":{
-    "number":number, 
-    "npc":npc, 
-    "nps":nps
+    "number":0, 
+    "npc":0, 
+    "nps":0
   }, 
   "upgrades":{
       "npc":{
@@ -33,7 +31,7 @@ var saveFile = {
 var hasPlayed = false
 
 function increment () {
-  number += npc
+  saveFile.power.number += saveFile.power.npc
 }
 
 // Format
@@ -95,9 +93,9 @@ function format(amount) {
 function buyUpgrade (type) {
   if (type == "npc1") {
     let s = saveFile.upgrades.npc
-    if (s.cost[0] <= number) {
-      number -= s.cost[0]
-      npc += 1
+    if (s.cost[0] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[0]
+      saveFile.power.npc += 1
       s.cost[0] = s.cost[0] * s.mult[0]
       s.bought += 1
       s.amount += 1
@@ -106,9 +104,9 @@ function buyUpgrade (type) {
   }
   else if (type == "npc2") {
     let s = saveFile.upgrades.npc
-    if (s.cost[1] <= number) {
-      number -= s.cost[1]
-      npc += 5
+    if (s.cost[1] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[1]
+      saveFile.power.npc += 5
       s.cost[1] = s.cost[1] * s.mult[1]
       s.bought += 1
       s.amount += 1
@@ -117,9 +115,9 @@ function buyUpgrade (type) {
   }
   else if (type == "npc3") {
     let s = saveFile.upgrades.npc
-    if (s.cost[2] <= number) {
-      number -= s.cost[2]
-      npc += 10
+    if (s.cost[2] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[2]
+      saveFile.power.npc += 10
       s.cost[2] = s.cost[2] * s.mult[2]
       s.bought += 1
       s.amount += 1
@@ -128,9 +126,9 @@ function buyUpgrade (type) {
   }
   if (type == "nps1") {
     let s = saveFile.upgrades.nps
-    if (s.cost[0] <= number) {
-      number -= s.cost[0]
-      nps += 1
+    if (s.cost[0] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[0]
+      saveFile.power.nps += 1
       s.cost[0] = s.cost[0] * s.mult[0]
       s.bought += 1
       s.amount += 1
@@ -139,9 +137,9 @@ function buyUpgrade (type) {
   }
   else if (type == "nps2") {
     let s = saveFile.upgrades.nps
-    if (s.cost[1] <= number) {
-      number -= s.cost[1]
-      nps += 5
+    if (s.cost[1] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[1]
+      saveFile.power.nps += 5
       s.cost[1] = s.cost[1] * s.mult[1]
       s.bought += 1
       s.amount += 1
@@ -150,9 +148,9 @@ function buyUpgrade (type) {
   }
   else if (type == "nps3") {
     let s = saveFile.upgrades.nps
-    if (s.cost[2] <= number) {
-      number -= s.cost[2]
-      nps += 10
+    if (s.cost[2] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[2]
+      saveFile.power.nps += 10
       s.cost[2] = s.cost[2] * s.mult[2]
       s.bought += 1
       s.amount += 1
@@ -181,7 +179,7 @@ function load () {
 }
 
 function productionLoop () {
-  number += nps / 20
+  saveFile.power.number += saveFile.power.nps / 20
 }
 
 function render () {
@@ -191,11 +189,11 @@ function render () {
   const npsText = document.getElementById("npsText")
   const title = document.getElementById("webTitle")
   
-  title.textContent = "Infinity Clicker - " + format(number)
-  numberText.textContent = format(number)
-  numberTextBottom.textContent = format(number)
-  npcText.textContent = format(npc)
-  npsText.textContent = format(nps)
+  title.textContent = "Infinity Clicker - " + format(saveFile.power.number)
+  numberText.textContent = format(saveFile.power.number)
+  numberTextBottom.textContent = format(saveFile.power.number)
+  npcText.textContent = format(saveFile.power.npc)
+  npsText.textContent = format(saveFile.power.nps)
         
   requestAnimationFrame(render)
 }

@@ -80,7 +80,7 @@
   <div class="page"  id="startPage" style="display: block" class="center">
     <div id="numberContainer">Number: 50</div>
     Number Per Click Upgrades (NPC Upgrades) <br>
-    <button class="upgrade" onClick="npc += 1; document.getElementById('infinityPage').style.display = 'block'; document.getElementById('startPage').style.display = 'none'; document.getElementById('topBar').style.display = 'block'">
+    <button class="upgrade" onClick="saveFile.power.npc += 1; document.getElementById('infinityPage').style.display = 'block'; document.getElementById('startPage').style.display = 'none'; document.getElementById('topBar').style.display = 'block'">
       NPC +1 <br><br>
       Cost: 50
     </button>
@@ -92,7 +92,7 @@
 
   </div>
   <div class="page" id="devPage" style="display: none">
-    <button class="upgrade" onClick="number *= 2">2x Number</button>
+    <button class="upgrade" onClick="saveFile.power.number *= 2">2x Number</button>
   </div>
   <div>
     <div style="width: 50vw" id="bottomBar">Number: <span id="numberTextBottom">50</span></div>
