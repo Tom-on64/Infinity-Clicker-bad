@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: auto;
+  user-select: none;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  /* overflow: hidden; */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.upgrade {
+  border: 2px solid lime;
+  cursor: poiner;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 1em
+}
+
+#numberContainer {
+  font-size: 1.7em;
+}
+
+#numberText {
+  font-size: 2.1em;
+}
+
+
+button.clickButton {
+  width: 250px;
+  height: 250px;
+}
+
+#topBar {
+  background-color: #42445A;
+  border: 2px gray solid;
+  margin: 2px;
+  padding: 2px;
+}
+
+.tabButton {
+  background-color: #4A4C58;
+  border: 2px black solid;
+  margin: 2px;
+  padding: 2px;
+}
+
+.tabButton:hover {
+  background-color: #16171B;
+  border: 2px green solid;
+  margin: 2px;
+  padding: 2px;
+}
+
+#bottomBar {
+  background-color: #42445A;
+  border: 2px gray solid;
+  margin: 2px;
+  padding: 2px;
+  width: 100%;
+}
+
+.active {
+  background-color: #16171B;
+  border: 2px lime solid;
+  margin: 2px;
+  padding: 2px;
+}

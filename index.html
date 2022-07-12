@@ -1,104 +1,102 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinity Clicker</title>
-    <link media="only screen and (max-width: 420px)" href="styles/mobilePortrait.css" type="text/css" rel="stylesheet">
-    <link media="only screen and (min-width: 421px) and (max-width: 680px)" href="styles/mobileLandscape.css" type="text/css" rel="stylesheet">
-    <link media="only screen and (min-device-width: 681px)" href="styles/desktop.css" type="text/css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/style.css">
+  <title id="webTitle">Infinity Clicker</title>
 </head>
-
 <body>
-    <div class="tabContainer">
-        <button class="tabButton" id="defaultOpen" onclick="openTab(event, 'infinity', 'tab', 'tabButton', 'block')">Infinity</button>
-        <button class="tabButton" onclick="openTab(event, 'shop', 'tab', 'tabButton', 'block')">Shop</button>
-        <button class="tabButton" onclick="openTab(event, 'dev', 'tab', 'tabButton', 'block')">DEV</button>
-        <button class="tabButton" onclick="openTab(event, 'settings', 'tab', 'tabButton', 'block')">Settings</button>
-        <button class="tabButton" onclick="openTab(event, 'achivements', 'tab', 'tabButton', 'block')">Achivements</button>
-        <button class="tabButton" onclick="openTab(event, 'info', 'tab', 'tabButton', 'block')">Info</button>
+  <div id="topBar" style="display: none">
+    <button onClick="changeTab('infinity')" class="tabButton" class="active">Infinity</button>
+    <button onClick="changeTab('infinitum')" class="tabButton">Infinitum</button>
+    <button onClick="changeTab('help')" class="tabButton">Help</button>
+    <button onClick="changeTab('about')" class="tabButton">About</button>
+    <button onClick="changeTab('dev')" class="tabButton">DEV</button>
+  </div>
+  <div class="page" id="infinityPage" style="display: none">
+    <div style="width: 100vw; height: 50vh" class="center">
+      <div style="width: 50vw" id="numberContainer">Number: <span id="numberText">50</span></div>
+      <button class="clickButton" onClick="increment()"><span style="font-size: 2em">Click!</span> <br><br>NPC: <span id="npcText">0</span><br>NPS: <span id="npsText">0</span></button>
     </div>
-    <div class="alert" id="alert">
-        <span class="closeBtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <span id="alertText">Hi</span>
+    <div id=upgrades>
+      <div id=npc class="center" width="100vw">
+        <div><span style="font-size: 1.3em; margin: 5px;">Number Per Click Upgrades</span> (NPC upgrades)</div>
+        <div id="npc1" class="upgrade" onClick="buyUpgrade('npc1')">
+          NPC +1
+          <br><br>
+          Cost: 50.00
+        </div>
+        <div id="npc2" class="upgrade" onClick="buyUpgrade('npc2')">
+          NPC +5
+          <br><br>
+          Cost: 200.00
+        </div>
+        <div id="npc3" class="upgrade" onClick="buyUpgrade('npc3')">
+        NPC +10
+        <br><br>
+        Cost: 500.00
+        </div>
+      </div>
+      <div id=nps class="center" width="100vw">
+      <div><span style="font-size: 1.25em; margin: 3px;">Number Per Second Upgrades</span> (NPS upgrades)</div>
+      <div id="nps1" class="upgrade" onClick="buyUpgrade('nps1')">
+        NPS +1
+        <br><br>
+        Cost: 1.00K
+      </div>
+      <div id="nps2" class="upgrade" onClick="buyUpgrade('nps2')">
+        NPS +5
+        <br><br>
+        Cost: 5.00K
+      </div>
+      <div id="nps3" class="upgrade" onClick="buyUpgrade('nps3')">
+        NPS +10
+        <br><br>
+        Cost: 10.00K
+      </div>
+      </div>
+      <div id=gen class="center" width="100vw">
+        <div><span style="font-size: 1.3em; margin: 5px;">Generator Upgrades</span> (GEN upgrades)</div>
+        <div id="gen1" class="upgrade" onClick="buyUpgrade('gen1')">
+          NPC Generator
+          <br><br>
+          Cost: 15.00K
+        </div>
+        <div id="gen2" class="upgrade" onClick="buyUpgrade('gen2')">
+          NPS Generator
+          <br><br>
+          Cost: 20.00K
+        </div>
+      </div>
     </div>
-    <div class="numberText">Number: <span id="numberInt">50</span></div>
-    <div class="tab" id="infinity">
-        <div class="infinityTabContainer">
-            <button class="infinityTabButton" id="defaultOpen" onclick="openTab(event, 'generatorContainer', 'infinityTab', 'infinityTabButton', 'flex')">Generator</button>
-            <button class="infinityTabButton" onclick="openTab(event, 'calculatorContainer', 'infinityTab', 'infinityTabButton', 'block')">Calculator</button>
-            <button class="infinityTabButton" onclick="openTab(event, 'dilatorContainer', 'infinityTab', 'infinityTabButton', 'block')">Dilator</button>
-        </div>
-        <div class="infinityTab" id="generatorContainer" style="display: flex;">
-            <div class="generator" id="gen1" onClick="buyGenerator(1)"></div>
-            <div class="generator" id="gen2" onClick="buyGenerator(2)"></div>
-            <div class="generator" id="gen3" onClick="buyGenerator(3)"></div>
-            <div class="generator" id="gen4" onClick="buyGenerator(4)"></div>
-            <div class="generator" id="gen5" onClick="buyGenerator(5)"></div>
-            <div class="generator" id="gen6" onClick="buyGenerator(6)"></div>
-            <div class="generator" id="gen7" onClick="buyGenerator(7)"></div>
-            <div class="generator" id="gen8" onClick="buyGenerator(8)"></div>
-            <div class="generator" id="gen9" onClick="buyGenerator(9)"></div>
-            <div class="generator" id="gen10" onClick="buyGenerator(10)"></div>
-        </div>
-        <div class="infinityTab" id="calculatorContainer">
-            <h3>Number Calculations</h3>
-            Comming Soon...
-        </div>
-        <div class="infinityTab" id="dilatorContainer">
-            <h3>Time Dilation</h3>
-            Comming Soon...
-        </div>
-    </div>
-    <div class="tab" id="shop">
-        <h2>Shop</h2>
-        <div class="shopTabContainer">
-            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'autobuyerContainer', 'shopTab', 'shopTabButton', 'flex')">Autobuyers</button>
-            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'infinitumContainer', 'shopTab', 'shopTabButton', 'flex')">Infinitum</button>
-            <button class="shopTabButton" id="defaultOpen" onclick="openTab(event, 'iterumContainer', 'shopTab', 'shopTabButton', 'flex')">Infinitum</button>
-        </div>
-        <div class="shopTab" id="autobuyerContainer">
-            <div class="autobuyer" id="auto1" onClick="buyAutobuyer(1)">test</div>
-            <div class="autobuyer" id="auto2" onClick="buyAutobuyer(2)">test</div>
-            <div class="autobuyer" id="auto3" onClick="buyAutobuyer(3)">test</div>
-            <div class="autobuyer" id="auto4" onClick="buyAutobuyer(4)">test</div>
-            <div class="autobuyer" id="auto5" onClick="buyAutobuyer(5)">test</div>
-            <div class="autobuyer" id="auto6" onClick="buyAutobuyer(6)">test</div>
-            <div class="autobuyer" id="auto7" onClick="buyAutobuyer(7)">test</div>
-            <div class="autobuyer" id="auto8" onClick="buyAutobuyer(8)">test</div>
-            <div class="autobuyer" id="auto9" onClick="buyAutobuyer(9)">test</div>
-            <div class="autobuyer" id="auto10" onClick="buyAutobuyer(10)">test</div>
-        </div>
-        <div class="shopTab" id="infinitumContainer">
-            <h3>Infinitum</h3>
-            Comming Soon...
-        </div>
-        <div class="shopTab" id="iterumContainer">
-            <h3>Interum</h3>
-            Comming Soon...
-        </div>
-    </div>
-    <div class="tab" id="dev">
-        <div class="generator" onClick="number *= 2">2x Number</div>
-    </div>
-    <div class="tab" id="settings">
-        <button onClick="saveGame()" class="generator">Save Game</button>
-        <button onClick="loadGame()" class="generator">Load Game</button>
-        <div><b style="color: #f00">WARNING!</b><br>This Action Is PERMANENT And Cannot Be Indone.<br><br></div>
-        <button onClick="resetGame()" class="generator">RESET GAME</button>
-    </div>
-    <div class="tab" id="achivements">
-    </div>
-    <div class="tab" id="info">
-        <h2>Infinity Clicker</h2>
-        <h3 class="infoButton" onclick="openTab(event, 'what', 'info', 'infoButton')">What Is It?</h3>
-        <p class="info" id="what">Infinity Clicker is an Incremental game, meaning that to get further, you have gotta
-            reset your progress to get a slight boost.</p>
-        <h3 class="infoButton" onclick="openTab(event, 'faq', 'info', 'infoButton')">FAQ</h3>
-        <p class="info" id="faq"><b>How Do The Generators Work?</b><br>- The generators generate the thing above them.
-            For example: Generator 2 generates generators 1 and a Generator 1 generates the number.</p>
-    </div>
+  </div>
+  <div class="page" id="infinitumPage" style="display: none">
+    <h2>Infinitum</h2> 
+    <hr>
+    <h3>You need to reach infinity to unlock this page!</h3>
+  </div>
+  <div class="page"  id="startPage" style="display: block" class="center">
+    <div id="numberContainer">Number: 50</div>
+    Number Per Click Upgrades (NPC Upgrades) <br>
+    <button class="upgrade" onClick="npc += 1; document.getElementById('infinityPage').style.display = 'block'; document.getElementById('startPage').style.display = 'none'; document.getElementById('topBar').style.display = 'block'">
+      NPC +1 <br><br>
+      Cost: 50
+    </button>
+  </div>
+  <div class="page"  id="helpPage" style="display: none">
+
+  </div>
+  <div class="page"  id="aboutPage" style="display: none">
+
+  </div>
+  <div class="page" id="devPage" style="display: none">
+    <button class="upgrade" onClick="number *= 2">2x Number</button>
+  </div>
+  <div>
+    <div style="width: 50vw" id="bottomBar">Number: <span id="numberTextBottom">50</span></div>
+  </div>
+<script src="js/index.js"></script>
 </body>
-    <script src="js/main.js"></script>
 </html>
