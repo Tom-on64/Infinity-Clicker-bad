@@ -81,31 +81,50 @@
   </div>
   <div class="page" id="achivementPage" class="center" style="display: none">
     <h2>Achivements</h2> <br> <hr>
-    <img class="achivement" id="a01" src="/img/achivement/a01.png">
+    <img title="It's A Start" class="achivement" id="a1" src="/img/achivement/a1.png">
+    <img title="It 'aint much, but it's honest work." class="achivement" id="a1" src="/img/achivement/a2.png">
+    <img title="Stable income" class="achivement" id="a1" src="/img/achivement/a3.png">
+    <img title="A New GENeration" class="achivement" id="a4" src="/img/achivement/a4.png">
   </div>
-  <div class="page"  id="startPage" style="display: block" class="center">
+  <div class="page"  id="startPage" style="display: block">
     <div id="numberContainer">Number: 50</div>
-    Number Per Click Upgrades (NPC Upgrades) <br>
+    <div>Number Per Click Upgrades (NPC Upgrades)</div> <br>
     <button class="upgrade" onClick="saveFile.power.npc += 1; document.getElementById('infinityPage').style.display = 'block'; document.getElementById('startPage').style.display = 'none'; document.getElementById('topBar').style.display = 'block'">
       NPC +1 <br><br>
       Cost: 50
     </button>
   </div>
   <div class="page"  id="helpPage" style="display: none">
-
+    <h2>Help</h2>
+    <hr>
+    <h3>Number</h3>
+    <p>You can think of the number as your money or point, that you can buy things with.</p><br>
+    <h3>NPC</h3>
+    <p>NPC is an acronym for Number Per Click and it shows how much your Number is going to increase after clicking.</p><br>
+    <h3>NPS</h3>
+    <p>NPS in an acronym for Number Per Second and it shows how much your Number is going to increase every second.</p><br>
+    <h3>GEN</h3>
+    <p>GEN means GENerator. It automaticly buys the NPC and NPS upgrades for you.</p><br>
+    <h3>Infinity</h3>
+    <p>After you reach Infinity(1.8*10^308), you get an Infinity. You can buy upgrades for these infinities in Infinitum.</p><br>
+    <h3>Infinitum</h3>
+    <p>You gain access to Infinitum, after you reach Infinity(1.8*10^308). In Infinitum you can buy upgrades for your infinities.</p><br>
   </div>
   <div class="page"  id="aboutPage" style="display: none">
-
+    <h2>Infinity Clicker</h2>
+    <h4>By Tom-on</h4>
+    <hr>
+    <h3>What is Infinity Clicker?</h3>
+    <p>Infinity Clicker is an Incremental game meaning that to get further, you will need to sacrifice your progress for a small boost.</p>
+    <hr>
   </div>
   <div class="page" id="devPage" style="display: none">
     <button class="upgrade" onClick="saveFile.power.number *= 2">2x Number</button>
   </div>
-  <div>
-    <div style="width: 50vw" id="bottomBar">
-      <div>Number: <span id="numberTextBottom">50</span></div>
-      <div id="alertBox">
-        <span id="alertMessage">This is an Alert!</span>
-      </div>
+  <div id="bottomBar">
+    <div>Number: <span id="numberTextBottom">50</span></div>
+    <div id="alertBox">
+      <span id="alertMessage"></span>
     </div>
   </div>
 <script src="js/index.js"></script>

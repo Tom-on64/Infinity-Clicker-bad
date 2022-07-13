@@ -21,9 +21,14 @@ var saveFile = {
       "gen": {
         "cost": [15000, 20000], 
         "interval": [20000, 20000], 
+        "mult": [1.8, 1.9], 
         "amount": [0, 0],
-        "isBought": [false, false]
+        "isBought": [false, false], 
+        "online": [false, false]
       }
+   }, 
+   "achivement": {
+    "normal": [0, 0, 0]
    }
 }
 // setup
@@ -156,6 +161,16 @@ function buyUpgrade (type) {
       document.getElementById("nps3").innerHTML = "NPS +10<br><br>Cost: " + format(s.cost[2])
     }
   }
+  if (type == "gen1") {
+    let s = saveFile.upgrades.gen
+    if (s.cost[0] <= saveFile.power.number) {
+      saveFile.power.number -= s.cost[0]
+      s.cost[0] = s.cost[0] * s.mult[0]
+      s.isBought = true
+      s.amount += 1
+      document.getElementById("gen1").innerHTML = "NPC Generator<br><button onClick='if (saveFile.upgrades.gen.online[0] = true) saveFile.upgrades.gen.online[0] = false; else saveFile.upgrades.gen.online[0] = true'>Online</button><br><br><button>Upgrade<br>Cost: " + format(s.cost[0]) + "</button>"
+    }
+  }
 }
 
 function changeTab (tab) {
@@ -170,7 +185,7 @@ function changeTab (tab) {
   page = document.getElementById(tab + "Page").style.display = "block"
 }
 
-function alert (message, bgColor, textColor) {
+function alert(message, textColor="white", bgColor="none", timeout=10000) {
   document.getElementById("alertMessage").textContent = message
   document.getElementById("alertMessage").style.backgroundColor = bgColor
   document.getElementById("alertMessage").style.color = textColor
@@ -179,7 +194,7 @@ function alert (message, bgColor, textColor) {
     document.getElementById("alertMessage").textContent = ""
     document.getElementById("alertMessage").style.backgroundColor = "none"
     document.getElementById("alertMessage").style.color = "none"
-  }, 10000)
+  }, timeout)
 
   
 }
@@ -194,6 +209,8 @@ function load () {
 
 function productionLoop () {
   saveFile.power.number += saveFile.power.nps / 20
+
+
 }
 
 function render () {
@@ -208,8 +225,27 @@ function render () {
   numberTextBottom.textContent = format(saveFile.power.number)
   npcText.textContent = format(saveFile.power.npc)
   npsText.textContent = format(saveFile.power.nps)
+
+  /* for (let i = 1; i < 3; i += 1) {
+    let index = i
+    if (saveFile.achivement.normal[i - 1] == 1) document.getElementById("a" + index).classList.add = "active"
+    else document.getElementById("a" + index).classList.remove = "active"
+  } */
+
+  checkLoop()
         
   requestAnimationFrame(render)
+}
+
+function checkLoop () {
+let p = saveFile.power
+
+  // Achivements
+  let a = saveFile.achivement.normal
+  if ( p.npc >= 1  && a[0] < 1) { a[0] = 1; alert("Achivement! It's A Start!", "yellow", "blue") }
+  if ( p.npc >= 10 && a[1] < 1) { a[1] = 1; alert("Achivement! It 'Aint Much, But It's Honest Work.", "yellow", "blue") }
+  if ( p.nps >= 1  && a[2] < 1) { a[2] = 1; alert("Achivement! Stable Income", "yellow", "blue") }
+  if ( saveFile.upgrades.gen.amount[0] == 1) { saveFile.upgrades.gen.amount[0] = 2; alert("Achivement! A New GENeration", "yellow", "blue") }
 }
 
 setInterval(productionLoop, 50)

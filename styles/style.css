@@ -5,6 +5,7 @@
   box-sizing: border-box;
   background-color: black;
   color: white;
+
   /* overflow: hidden; */
 }
 
@@ -21,7 +22,7 @@
 }
 
 .upgrade {
-  border: 2px solid lime;
+  border: 2px lime solid;
   cursor: poiner;
   width: 100px;
   height: 100px;
@@ -66,10 +67,13 @@ button.clickButton {
 
 #bottomBar {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
   background-color: #42445A;
   border: 2px gray solid;
-  margin: 2px;
   padding: 2px;
+  margin-top: 2%;
   width: 100%;
 }
 
@@ -82,7 +86,7 @@ button.clickButton {
 }
 
 .achivement {
-  background-color: #16171B;
+  background-color: #16171B; 
   border: 2px red solid;
   margin: 2px;
   padding: 2px;
@@ -90,9 +94,21 @@ button.clickButton {
   height: 64px;
 }
 
-.active {
-  background-color: #16171B;
-  border: 2px lime solid;
-  margin: 2px;
+#startPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#startPage div {
+  text-align: center;
+}
+
+#alertMessage {
   padding: 2px;
+}
+
+.active {
+  border: 2px lime solid;
 }
