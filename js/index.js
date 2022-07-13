@@ -28,7 +28,7 @@ var saveFile = {
       }
    }, 
    "achivement": {
-    "normal": [0, 0, 0]
+    "normal": [0, 0, 0, 0]
    }
 }
 // setup
