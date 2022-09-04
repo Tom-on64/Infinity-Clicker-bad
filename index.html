@@ -8,22 +8,35 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <title id="webTitle">Infinity Clicker</title>
 </head>
-<body>
-  <div id="infinityDiv">
+<body onload="init()">
+  <div id="statusBar">
+    <span>Infinity Clicker</span>
+    <hr>
+  </div>
+  <div id="leftColumn" class="column">
     <!-- Power -->
     <div id="power">
       <h1 id="numberContainer">Number: <span id="numberText">0</span></h1>
       <h3 id="npcContainer">NPC (Numbers Per Click)   <span id="npcText">1</span></h3>
       <h3 id="npsContainer">NPS (Numbers Per Second)  <span id="npsText">0</span></h3>
+      <hr><br>
     </div>
     <!-- Button -->
     <button id="clickButton" onClick="increment()">Click!</button>
   </div>
-  <div id="shopDiv">
+  <div id="rightColumn" class="column">
     <!-- Shop -->
     <div id="shop">
       <div>
-        <button onClick="document.getElementById('npsScroll').style.display = 'none'; document.getElementById('npcScroll').style.display = 'block'">NPC</button> <button onClick="document.getElementById('npcScroll').style.display = 'none'; document.getElementById('npsScroll').style.display = 'block'">NPS</button>
+        <button id="npcButton" 
+          onClick="document.getElementById('npsScroll').style.display = 'none'; document.getElementById('npcScroll').style.display = 'block'; document.getElementById('genScroll').style.display = 'none'">NPC
+        </button>
+        <button id="npsButton" 
+          onClick="document.getElementById('npcScroll').style.display = 'none'; document.getElementById('npsScroll').style.display = 'block'; document.getElementById('genScroll').style.display = 'none'">NPS
+        </button>
+        <button id="genButton"
+          onClick="document.getElementById('npcScroll').style.display = 'none'; document.getElementById('npsScroll').style.display = 'none'; document.getElementById('genScroll').style.display = 'block'">GEN
+        </button>
       </div>
       <!-- Npc Shop -->
       <div id="npcScroll" class="scroll">
@@ -38,6 +51,10 @@
         <button onClick="buy('nps', 5)">NPS +5</button> <span id="nps5cost" class="costText"></span><br>
         <button onClick="buy('nps', 10)">NPS +10</button> <span id="nps10cost" class="costText"></span><br>
         <button onClick="buy('nps', 100)">NPS +100</button> <span id="nps100cost" class="costText"></span><br>
+      </div>
+      <!-- Gen Shop -->
+      <div id="genScroll" style="display: none;" class="scroll">
+        <div>Comming Soon! :)</div>
       </div>
     </div>
   </div>

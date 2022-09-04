@@ -15,6 +15,9 @@ var saveFile = {
       bought: 0,
       amount: 0,
       mult: 1.3
+    }, 
+    gen: {
+      isBought: [false, false]
     }
   }, 
   settings: {
@@ -31,7 +34,7 @@ const buy = (_item, _amount) => {
   switch (_item) {
     case "npc":
       if (saveFile.upgrades.npc.cost * _amount <= saveFile.power.number) {
-        saveFile.power.number -= saveFile.upgrades.npc.cost * _amount * saveFile.upgrades.npc.mult
+        saveFile.power.number -= saveFile.upgrades.npc.cost * _amount
         saveFile.upgrades.npc.bought += _amount
         saveFile.upgrades.npc.amount += _amount
         saveFile.upgrades.npc.cost *= saveFile.upgrades.npc.mult
@@ -39,7 +42,7 @@ const buy = (_item, _amount) => {
       break
     case "nps":
       if (saveFile.upgrades.nps.cost * _amount <= saveFile.power.number) {
-        saveFile.power.number -= saveFile.upgrades.nps.cost * _amount * saveFile.upgrades.nps.mult
+        saveFile.power.number -= saveFile.upgrades.nps.cost * _amount
         saveFile.upgrades.nps.bought += _amount
         saveFile.upgrades.nps.amount += _amount
         saveFile.upgrades.nps.cost *= saveFile.upgrades.nps.mult
@@ -124,10 +127,50 @@ setInterval(function () {
   document.getElementById("nps5cost").textContent = format(saveFile.upgrades.nps.cost * 5)
   document.getElementById("nps10cost").textContent = format(saveFile.upgrades.nps.cost * 10)
   document.getElementById("nps100cost").textContent = format(saveFile.upgrades.nps.cost * 100)
-  if (saveFile.upgrades.nps.amount !== 0) document.getElementById("npsContainer").style.display = "block"
-  else document.getElementById("npsContainer").style.display = "none"
+  if (saveFile.upgrades.nps.amount !== 0 || saveFile.power.number >= 1000) {
+    document.getElementById("npsContainer").style.display = "block"
+    document.getElementById("npsButton").style.display = "block"
+  }
+  else {
+    document.getElementById("npsContainer").style.display = "none"
+    document.getElementById("npsButton").style.display = "none"
+  }
+  if (saveFile.upgrades.gen.isBought[0] || saveFile.upgrades.gen.isBought[1] || saveFile.power.number >= 5000) document.getElementById("genButton").style.display = "block"
+  else document.getElementById("genButton").style.display = "none"
 }, saveFile.settings.updateRate)
 setInterval(function () {
   // Math
   saveFile.power.number += saveFile.upgrades.nps.amount / 20
 }, 50)
+setInterval(function () {
+  localStorage.setItem("saveFile", JSON.stringify(saveFile))
+}, 10000)
+const init = () => {
+  saveFile = JSON.parse(localStorage.getItem('saveFile'))
+  if (saveFile === undefined)
+  saveFile = {
+    power: {
+      number: 0
+    },
+    upgrades: {
+      npc: {
+        cost: 50,
+        bought: 0,
+        amount: 1,
+        mult: 1.07
+      },
+      nps: {
+        cost: 1000,
+        bought: 0,
+        amount: 0,
+        mult: 1.3
+      },
+      gen: {
+        isBought: [false, false]
+      }
+    },
+    settings: {
+      updateRate: 100
+    }
+  }
+}
