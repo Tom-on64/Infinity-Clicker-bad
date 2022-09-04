@@ -9,124 +9,39 @@
   <title id="webTitle">Infinity Clicker</title>
 </head>
 <body>
-  <div id="topBar" style="display: none">
-    <button onClick="changeTab('infinity')" class="tabButton" class="active">Infinity</button>
-    <button onClick="changeTab('infinitum')" class="tabButton">Infinitum</button>
-    <button onClick="changeTab('achivement')" class="tabButton">Achivements</button>
-    <button onClick="changeTab('help')" class="tabButton">Help</button>
-    <button onClick="changeTab('about')" class="tabButton">About</button>
-    <button onClick="changeTab('dev')" class="tabButton" style="display: hidden;">DEV</button>
-  </div>
-  <div class="page" id="infinityPage" style="display: none">
-    <div style="width: 100vw; height: 50vh" class="center">
-      <div style="width: 50vw" id="numberContainer">Number: <span id="numberText">50</span></div>
-      <button class="clickButton" onClick="increment()"><span style="font-size: 2em">Click!</span> <br><br>NPC: <span id="npcText">0</span><br>NPS: <span id="npsText">0</span></button>
+  <div id="infinityDiv">
+    <!-- Power -->
+    <div id="power">
+      <h1 id="numberContainer">Number: <span id="numberText">0</span></h1>
+      <h3 id="npcContainer">NPC (Numbers Per Click)   <span id="npcText">1</span></h3>
+      <h3 id="npsContainer">NPS (Numbers Per Second)  <span id="npsText">0</span></h3>
     </div>
-    <div id=upgrades>
-      <div id=npc class="center" width="100vw">
-        <div><span style="font-size: 1.3em; margin: 5px;">Number Per Click Upgrades</span> (NPC upgrades)</div>
-        <div id="npc1" class="upgrade" onClick="buyUpgrade('npc1')">
-          NPC +1
-          <br><br>
-          Cost: 50.00
-        </div>
-        <div id="npc2" class="upgrade" onClick="buyUpgrade('npc2')">
-          NPC +5
-          <br><br>
-          Cost: 200.00
-        </div>
-        <div id="npc3" class="upgrade" onClick="buyUpgrade('npc3')">
-        NPC +10
-        <br><br>
-        Cost: 500.00
-        </div>
+    <!-- Button -->
+    <button id="clickButton" onClick="increment()">Click!</button>
+  </div>
+  <div id="shopDiv">
+    <!-- Shop -->
+    <div id="shop">
+      <div>
+        <button onClick="document.getElementById('npsScroll').style.display = 'none'; document.getElementById('npcScroll').style.display = 'block'">NPC</button> <button onClick="document.getElementById('npcScroll').style.display = 'none'; document.getElementById('npsScroll').style.display = 'block'">NPS</button>
       </div>
-      <div id=nps class="center" width="100vw">
-      <div><span style="font-size: 1.25em; margin: 3px;">Number Per Second Upgrades</span> (NPS upgrades)</div>
-      <div id="nps1" class="upgrade" onClick="buyUpgrade('nps1')">
-        NPS +1
-        <br><br>
-        Cost: 1.00K
+      <!-- Npc Shop -->
+      <div id="npcScroll" class="scroll">
+        <button onClick="buy('npc', 1)">NPC +1</button> <span id="npc1cost" class="costText"></span><br>
+        <button onClick="buy('npc', 5)">NPC +5</button> <span id="npc5cost" class="costText"></span><br>
+        <button onClick="buy('npc', 10)">NPC +10</button> <span id="npc10cost" class="costText"></span><br>
+        <button onClick="buy('npc', 100)">NPC +100</button> <span id="npc100cost" class="costText"></span><br>
       </div>
-      <div id="nps2" class="upgrade" onClick="buyUpgrade('nps2')">
-        NPS +5
-        <br><br>
-        Cost: 5.00K
-      </div>
-      <div id="nps3" class="upgrade" onClick="buyUpgrade('nps3')">
-        NPS +10
-        <br><br>
-        Cost: 10.00K
-      </div>
-      </div>
-      <div id=gen class="center" width="100vw">
-        <div><span style="font-size: 1.3em; margin: 5px;">Generator Upgrades</span> (GEN upgrades)</div>
-        <div id="gen1" class="upgrade" onClick="buyUpgrade('gen1')">
-          NPC Generator
-          <br><br>
-          Cost: 15.00K
-        </div>
-        <div id="gen2" class="upgrade" onClick="buyUpgrade('gen2')">
-          NPS Generator
-          <br><br>
-          Cost: 20.00K
-        </div>
+      <!-- Nps Shop -->
+      <div id="npsScroll" style="display: none;" class="scroll">
+        <button onClick="buy('nps', 1)">NPS +1</button> <span id="nps1cost" class="costText"></span><br>
+        <button onClick="buy('nps', 5)">NPS +5</button> <span id="nps5cost" class="costText"></span><br>
+        <button onClick="buy('nps', 10)">NPS +10</button> <span id="nps10cost" class="costText"></span><br>
+        <button onClick="buy('nps', 100)">NPS +100</button> <span id="nps100cost" class="costText"></span><br>
       </div>
     </div>
   </div>
-  <div class="page" id="infinitumPage" style="display: none">
-    <h2>Infinitum</h2> 
-    <hr>
-    <h3>You need to reach infinity to unlock this page!</h3>
-  </div>
-  <div class="page" id="achivementPage" class="center" style="display: none">
-    <h2>Achivements</h2> <br> <hr>
-    <img title="It's A Start" class="achivement" id="a1" src="/img/achivement/a1.png">
-    <img title="It 'aint much, but it's honest work." class="achivement" id="a1" src="/img/achivement/a2.png">
-    <img title="Stable income" class="achivement" id="a1" src="/img/achivement/a3.png">
-    <img title="A New GENeration" class="achivement" id="a4" src="/img/achivement/a4.png">
-  </div>
-  <div class="page"  id="startPage" style="display: block">
-    <div id="numberContainer">Number: 50</div>
-    <div>Number Per Click Upgrades (NPC Upgrades)</div> <br>
-    <button class="upgrade" onClick="saveFile.power.npc += 1; document.getElementById('infinityPage').style.display = 'block'; document.getElementById('startPage').style.display = 'none'; document.getElementById('topBar').style.display = 'block'">
-      NPC +1 <br><br>
-      Cost: 50
-    </button>
-  </div>
-  <div class="page"  id="helpPage" style="display: none">
-    <h2>Help</h2>
-    <hr>
-    <h3>Number</h3>
-    <p>You can think of the number as your money or point, that you can buy things with.</p><br>
-    <h3>NPC</h3>
-    <p>NPC is an acronym for Number Per Click and it shows how much your Number is going to increase after clicking.</p><br>
-    <h3>NPS</h3>
-    <p>NPS in an acronym for Number Per Second and it shows how much your Number is going to increase every second.</p><br>
-    <h3>GEN</h3>
-    <p>GEN means GENerator. It automaticly buys the NPC and NPS upgrades for you.</p><br>
-    <h3>Infinity</h3>
-    <p>After you reach Infinity(1.8*10^308), you get an Infinity. You can buy upgrades for these infinities in Infinitum.</p><br>
-    <h3>Infinitum</h3>
-    <p>You gain access to Infinitum, after you reach Infinity(1.8*10^308). In Infinitum you can buy upgrades for your infinities.</p><br>
-  </div>
-  <div class="page"  id="aboutPage" style="display: none">
-    <h2>Infinity Clicker</h2>
-    <h4>By Tom-on</h4>
-    <hr>
-    <h3>What is Infinity Clicker?</h3>
-    <p>Infinity Clicker is an Incremental game meaning that to get further, you will need to sacrifice your progress for a small boost.</p>
-    <hr>
-  </div>
-  <div class="page" id="devPage" style="display: none">
-    <button class="upgrade" onClick="saveFile.power.number *= 2">2x Number</button>
-  </div>
-  <div id="bottomBar">
-    <div>Number: <span id="numberTextBottom">50</span></div>
-    <div id="alertBox">
-      <span id="alertMessage"></span>
-    </div>
-  </div>
-<script src="js/index.js"></script>
+  
+  <script src="js/index.js"></script>
 </body>
 </html>

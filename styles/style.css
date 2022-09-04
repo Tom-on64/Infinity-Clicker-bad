@@ -1,114 +1,33 @@
-* {
-  padding: 0;
-  margin: auto;
-  user-select: none;
-  box-sizing: border-box;
-  background-color: black;
-  color: white;
-
-  /* overflow: hidden; */
+body {
+    margin: 0px;
+    padding: 1em;
+    border: 4px solid lime; 
+    background-color: black;
+    color: white;
+    overflow: hidden;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-wrap: wrap;
+button {
+    border: 2px solid lime;
+    background-color: black;
+    color: white;
+    margin: 2px;
 }
 
-.hidden {
-  display: none;
+#shop {
+    border: 2px solid lime;
+    width: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
-
-.upgrade {
-  border: 2px lime solid;
-  cursor: poiner;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  font-size: 1em
+#shop .scroll {
+    width: 100%;
+    border: 2px solid lime;
+    align-items: center;
+    justify-content: left;
 }
-
-#numberContainer {
-  font-size: 1.7em;
-}
-
-#numberText {
-  font-size: 2.1em;
-}
-
-
-button.clickButton {
-  width: 250px;
-  height: 250px;
-}
-
-#topBar {
-  background-color: #42445A;
-  border: 2px gray solid;
-  margin: 2px;
-  padding: 2px;
-}
-
-.tabButton {
-  background-color: #4A4C58;
-  border: 2px black solid;
-  margin: 2px;
-  padding: 2px;
-}
-
-.tabButton:hover {
-  background-color: #16171B;
-  border: 2px green solid;
-  margin: 2px;
-  padding: 2px;
-}
-
-#bottomBar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  background-color: #42445A;
-  border: 2px gray solid;
-  padding: 2px;
-  margin-top: 2%;
-  width: 100%;
-}
-
-#bottomBar div {
-  background-color: #42445A;
-}
-
-#numberTextBottom {
-  background-color: #42445A;
-}
-
-.achivement {
-  background-color: #16171B; 
-  border: 2px red solid;
-  margin: 2px;
-  padding: 2px;
-  width: 64px;
-  height: 64px;
-}
-
-#startPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#startPage div {
-  text-align: center;
-}
-
-#alertMessage {
-  padding: 2px;
-}
-
-.active {
-  border: 2px lime solid;
+#shop .costText {
+    text-align: right;
 }
