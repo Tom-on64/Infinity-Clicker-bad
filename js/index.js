@@ -1,5 +1,6 @@
 // SaveFile
-var saveFile = {
+const reset = () => { 
+saveFile = {
   power: {
     number: 0
   }, 
@@ -23,6 +24,7 @@ var saveFile = {
   settings: {
     updateRate: 100
   }
+}
 }
 
 const increment = () => {
