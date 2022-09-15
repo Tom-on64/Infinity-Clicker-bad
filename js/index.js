@@ -147,30 +147,31 @@ setInterval(function () {
 }, 10000)
 const init = () => {
   saveFile = JSON.parse(localStorage.getItem('saveFile'))
-  if (saveFile === undefined)
-  saveFile = {
-    power: {
-      number: 0
-    },
-    upgrades: {
-      npc: {
-        cost: 50,
-        bought: 0,
-        amount: 1,
-        mult: 1.07
+  if (saveFile === undefined) {
+    saveFile = {
+      power: {
+        number: 0
       },
-      nps: {
-        cost: 1000,
-        bought: 0,
-        amount: 0,
-        mult: 1.3
+      upgrades: {
+        npc: {
+          cost: 50,
+          bought: 0,
+          amount: 1,
+          mult: 1.07
+        },
+        nps: {
+          cost: 1000,
+          bought: 0,
+          amount: 0,
+          mult: 1.3
+        },
+        gen: {
+          isBought: [false, false]
+        }
       },
-      gen: {
-        isBought: [false, false]
+      settings: {
+        updateRate: 100
       }
-    },
-    settings: {
-      updateRate: 100
     }
   }
 }
